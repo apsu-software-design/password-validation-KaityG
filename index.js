@@ -1,45 +1,51 @@
-const validatePassword = require('./passwordvalidation.js'); //import the function
+const validatePassword = require('./passwordvalidation'); //import the function
 
-// Your code goes here!
+//Get the readline module (got code from online documentation)
+const readline = require('readline');
+    
+const rl = readline.createInterface({
+    input: process.stdin, output: process.stdout
+    });
+
+//Call function
+getPassword();
+
+
+
 function getPassword()
 {
-    //Get the readline module (got code from online documentation)
-    var readline = require('readline');
-    
-    var rl = readline.createInterface(process.stdin, process.stdout);
-
     rl.question('Enter your password:', (password) => 
     {   
         //Base case: quit the program
-        if (password == "quit" || password == "Quit")
+        if (password === "quit" || password === "Quit")
         {
-            alert("Thank you! Goodbye :)");
-            process.exit(1);
+            console.log("Thank you! Goodbye :)");
+            process.exit(0);
         }
         //check validity of user password
         else
         {
             //Notify user that password is correct
-            if(validatePassword)
+            if(validatePassword(password) === true)
             {
-                alert("Your password is valid.")
+                console.log("Your password is valid.")
             }
 
             //Notify user that the password is incorrect
             else
             {
-                alert("Your password is invalid. Try again.")
+                console.log("Your password is invalid. Try again.")
             }
 
         }
 
         //Close readline
-        rl.close();
+        //rl.close();
+        //Recursion: call the function repeatedly
+        getPassword();
 
     });
-    //Recursion: call the function repeatedly
-    getPassword();
+
     
 }
 
-getPassword();
