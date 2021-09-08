@@ -14,12 +14,12 @@ getPassword();
 
 function getPassword()
 {
-    rl.question('Enter your password:', (password) => 
+    rl.question('Enter your password (or "quit" to exit the program):', (password) => 
     {   
         //Base case: quit the program
         if (password === "quit" || password === "Quit")
         {
-            console.log("Thank you! Goodbye :)");
+            console.log("Thank you for using the validation program! Goodbye :)");
             process.exit(0);
         }
         //check validity of user password
@@ -28,13 +28,13 @@ function getPassword()
             //Notify user that password is correct
             if(validatePassword(password) === true)
             {
-                console.log("Your password is valid.")
+                console.log("Your password " + password + " is valid.")
             }
 
             //Notify user that the password is incorrect
             else
             {
-                console.log("Your password is invalid. Try again.")
+                console.log("Your password " + password + " is invalid. Try again.")
             }
 
         }
