@@ -39,6 +39,7 @@ function getPassword()
     });
     //Recursion: call the function repeatedly
     getPassword();
-
     
 }
+
+getPassword();
